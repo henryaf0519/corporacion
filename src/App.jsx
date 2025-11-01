@@ -17,7 +17,6 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-    <Header />
     <div className="flyer-container">
       {/* --- TÍTULO PRINCIPAL --- */}
       <header className="flyer-header">
@@ -127,7 +126,6 @@ function App() {
       </footer>
     </div>
     <BiosPonentes />
-    <Footer />
     </>
     
   );

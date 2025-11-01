@@ -1,0 +1,94 @@
+.form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #333;
+}
+
+.form-title {
+  color: #0d001c; /* Azul oscuro del footer */
+  text-align: center;
+  margin-top: 0;
+}
+
+.form-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.inscripcion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.form-group input {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #B200A0; /* Color acento */
+  box-shadow: 0 0 0 2px #b200a033;
+}
+
+.form-submit-btn {
+  background-color: #B200A0; /* Color acento */
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.form-submit-btn:hover {
+  background-color: #8e007e;
+}
+
+/* --- Estilos para el mensaje de éxito --- */
+.form-success-msg {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.error-message {
+  color: #d93025; /* Color rojo estándar para errores */
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+/* El borde rojo en el input que tiene el error */
+.form-group input.input-error {
+  border-color: #d93025; 
+}
+
+/* La sombra roja cuando haces foco en el input con error */
+.form-group input.input-error:focus {
+  border-color: #d93025;
+  box-shadow: 0 0 0 2px #d9302557; 
+}
