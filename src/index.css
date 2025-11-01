@@ -223,10 +223,6 @@ body {
   height: 22px
 }
 
-
-
-
-
 .website {
   font-weight: bold;
   font-size: 1.2rem;
@@ -257,8 +253,6 @@ body {
     align-items: center;
 }
 
-
-
 .detail-language-icon {
   font-size: 3.0rem; /* Tamaño del ícono */
   color: #ffffff;
@@ -284,4 +278,169 @@ body {
 
 .langeuage-text{
   font-size: 1.6rem;
+}
+
+
+/*
+=========================================
+--- ESTILOS PARA MÓVILES (RESPONSIVE) ---
+=========================================
+*/
+@media (max-width: 768px) {
+
+  .flyer-container {
+    padding: 20px 10px; /* Menos padding en móviles */
+  }
+
+  /* --- Encabezado --- */
+  .flyer-header h1 {
+    font-size: 2.5rem; /* Reducimos tamaños de fuentes */
+  }
+  .flyer-header .subtitle {
+    font-size: 1.8rem;
+  }
+  .intro-text {
+    font-size: 1.5rem;
+  }
+
+  /* --- Título del Evento --- */
+  .event-title h2 {
+    font-size: 1.5rem;
+  }
+  .event-title h3 {
+    font-size: 1.6rem;
+  }
+  .fs2 {
+    font-size: 1.2rem !important; /* Ajustamos el texto de "1.000 empresarios" */
+  }
+
+
+  /* --- Rejilla de detalles (LA PARTE CLAVE) --- */
+  .details-grid {
+    grid-template-columns: 1fr; /* Hacemos que la rejilla sea de 1 sola columna */
+    gap: 20px; /* Reducimos el espacio */
+    padding: 20px 0;
+  }
+
+  .details-right {
+    border-left: none; /* Quitamos el borde izquierdo en móviles */
+    padding-left: 0; /* Quitamos el padding izquierdo */
+    gap: 30px; /* Añadimos espacio entre los items de la columna derecha */
+  }
+  
+  .details-left{
+    /* Centramos los items de la izquierda */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-item {
+    align-items: center; /* Centramos ícono y texto */
+    text-align: center; /* Centramos el texto */
+  }
+  
+  .dfad, .dfau {
+     align-items: center; /* Forzamos la alineación al centro */
+     justify-content: center;
+  }
+  
+  .detail-text p {
+    justify-content: center;
+  }
+  
+  /* --- Traducción --- */
+  .language-cont {
+    justify-content: center;
+    gap: 15px;
+  }
+  .detail-language-icon {
+    font-size: 2.5rem;
+  }
+  .langeuage-text {
+    font-size: 1.3rem;
+  }
+
+  /* --- Footer --- */
+  .flyer-footer .quote {
+    font-size: 1.2rem;
+  }
+}
+
+/*
+=========================================
+--- ESTILOS PARA MÓVILES MUY PEQUEÑOS ---
+=========================================
+*/
+@media (max-width: 480px) {
+  .flyer-header h1 {
+    font-size: 2.0rem;
+  }
+  .flyer-header .subtitle {
+    font-size: 1.5rem;
+  }
+  .intro-text {
+    font-size: 1.2rem;
+  }
+
+  /* Estilo especial para la FECHA */
+  .date-line {
+    flex-direction: column; /* Apilamos el "27" encima del texto */
+    gap: 5px;
+  }
+  .date-line .large-text {
+    font-size: 3.0rem; 
+  }
+  .detail-date h1 {
+    font-size: 1.3rem;
+  }
+   .detail-date h2 {
+    font-size: 1.0rem;
+  }
+}
+
+
+/* --- Estilos para la nueva sección de Bios --- */
+
+/* Asumo que el fondo del flyer es oscuro, 
+   puedes cambiar este color si no es así */
+.bios-container {
+  background-color: #ffffff; 
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: left;
+}
+
+
+.ponente-bio {
+  max-width: 900px; /* Igual que el contenido del flyer */
+  margin: 0 auto 40px auto; /* Centrado y con espacio inferior */
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ffffff40; /* Línea separadora sutil */
+}
+
+/* Para que el último no tenga línea */
+.ponente-bio:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.ponente-bio h2 {
+  color: #B200A0; /* Usamos el otro highlight del flyer */
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.ponente-bio h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #000000; /* Un color más sutil para el título */
+}
+
+.ponente-bio p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
 }
