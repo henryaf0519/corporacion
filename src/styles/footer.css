@@ -1,0 +1,12 @@
+.app-footer {
+  background-color: #0d001c; /* Un color oscuro del fondo del flyer */
+  color: #ccc;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 0.9rem;
+  border-top: 2px solid #B200A0; /* Línea de acento */
+}
+
+.app-footer p {
+  margin: 0;
+}

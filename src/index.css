@@ -404,9 +404,11 @@ body {
 
 /* Asumo que el fondo del flyer es oscuro, 
    puedes cambiar este color si no es así */
+/* --- Estilos para la nueva sección de Bios --- */
+
 .bios-container {
   background-color: #ffffff; 
-  color: #ffffff;
+  color: #000000; /* CORREGIDO: Texto negro sobre fondo blanco */
   padding: 40px 20px;
   text-align: left;
 }
@@ -416,7 +418,8 @@ body {
   max-width: 900px; /* Igual que el contenido del flyer */
   margin: 0 auto 40px auto; /* Centrado y con espacio inferior */
   padding-bottom: 30px;
-  border-bottom: 1px solid #ffffff40; /* Línea separadora sutil */
+  border-bottom: 1px solid #00000020; /* CORREGIDO: Borde gris sutil */
+  overflow: hidden; /* IMPORTANTE: Para contener el float de la imagen */
 }
 
 /* Para que el último no tenga línea */
@@ -425,9 +428,21 @@ body {
   margin-bottom: 0;
 }
 
+/* --- ESTILOS NUEVOS PARA LA IMAGEN --- */
+.ponente-imagen {
+  float: left;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Esto la hace circular */
+  object-fit: cover; /* Evita que la imagen se estire */
+  margin-right: 25px; /* Espacio entre la imagen y el texto */
+  margin-bottom: 10px; /* Espacio por si el texto es muy corto */
+}
+
 .ponente-bio h2 {
   color: #B200A0; /* Usamos el otro highlight del flyer */
   font-size: 1.8rem;
+  margin-top: 0; /* Alinear con la parte superior de la imagen */
   margin-bottom: 5px;
 }
 
@@ -436,11 +451,28 @@ body {
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 15px;
-  color: #000000; /* Un color más sutil para el título */
+  color: #000000; 
 }
 
 .ponente-bio p {
   font-size: 1rem;
   line-height: 1.6;
   color: #000000;
+}
+
+/* --- RESPONSIVE PARA MÓVILES --- */
+@media (max-width: 480px) {
+  .ponente-bio {
+    text-align: center; /* Centramos los títulos en móvil */
+  }
+
+  .ponente-imagen {
+    float: none; /* Quitamos el float */
+    display: block;
+    margin: 0 auto 20px auto; /* Centramos la imagen */
+  }
+
+  .ponente-bio p {
+     text-align: left; /* Mantenemos los párrafos legibles */
+  }
 }

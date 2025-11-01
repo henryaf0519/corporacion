@@ -10,11 +10,14 @@ import {
 // 2. Importamos la imagen de los ponentes
 import speakersImage from "./assets/speakers.svg";
 
-import BiosPonentes from "./BiosPonentes"; 
+import BiosPonentes from "./components/BiosPonentes"; 
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
+    <Header />
     <div className="flyer-container">
       {/* --- TÍTULO PRINCIPAL --- */}
       <header className="flyer-header">
@@ -124,7 +127,7 @@ function App() {
       </footer>
     </div>
     <BiosPonentes />
-    
+    <Footer />
     </>
     
   );
