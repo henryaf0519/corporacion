@@ -9,10 +9,7 @@ import {
 
 // 2. Importamos la imagen de los ponentes
 import speakersImage from "./assets/speakers.webp";
-
-import BiosPonentes from "./components/BiosPonentes"; 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import BiosPonentes from "./components/BiosPonentes";
 
 function App() {
   return (
@@ -59,13 +56,13 @@ function App() {
             <div className="detail-item mb50">
               <FaCalendarAlt className="detail-icon" />
               <div className="detail-text dfad">
-                <p className="date-line">
+                <div className="date-line">
                   <h1 className="text-highlight large-text">27</h1>
                   <div className="detail-date">
                     <h1>NOVIEMBRE</h1>
                     <h2>Jueves</h2>
                   </div>
-                </p>
+                </div>
               </div>
             </div>
 

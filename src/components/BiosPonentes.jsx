@@ -1,10 +1,15 @@
 import PonenteBio from "./PonenteBio"; // Importamos el sub-componente
+import imgAndrea from "../assets/andrea.webp";
+import imgEster from "../assets/ester.webp";
+import imgJose from "../assets/jose.webp";
+import imgGregg from "../assets/greff.webp";
+
 
 // 1. Aquí están todos los datos de los ponentes actualizados
 const ponentesData = [
   {
     nombre: "Andrea Ridi",
-    imagen: "../assets/andrea.webp", // Imagen añadida
+    imagen: imgAndrea,
     titulo:
       "Expositor invitado al Congreso Global de IA realizado en Dubai. Es es miembro de un think tank de IA del MIT",
     descripcion: [
@@ -22,7 +27,7 @@ líderes empresariales impulsados por la IA.`,
   },
   {
     nombre: "Ester Pescio",
-    imagen: "../assets/ester.webp", // Imagen añadida
+    imagen: imgEster,
     titulo: "Professor of Practice, HIBS UG Boston",
     descripcion: [
       `Ester aporta más de 20 años de experiencia como cofundadora y ejecutiva
@@ -43,7 +48,7 @@ líderes empresariales impulsados por la IA.`,
   },
   {
     nombre: "Jose Gonzales",
-    imagen: "../assets/jose.webp", // Imagen añadida
+    imagen: imgJose,
     titulo: "Emprendimiento y Empresa: Resiliencia en la Travesía.",
     descripcion: [
       `Managing Partner de GCG Advisors, firma de banca de inversión en New
@@ -59,7 +64,7 @@ transacciones en diversos sectores, desde financiamientos de 3 millones de dóla
     nombre: "Gregg Bauer",
     // NOTA: Esta es la imagen que subiste.
     // Coloca la imagen renombrada a 'gregg-bauer.png' en tu carpeta 'public/'
-    imagen: "../assets/greff.webp", // Imagen añadida
+    imagen: imgGregg,
     titulo: "Las mejores lecciones internacionales sobre negocios y startups.",
     descripcion: [
       `pinnaker V.P. en Boston, MA, firma comprometida con el desarrollo de

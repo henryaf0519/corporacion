@@ -428,15 +428,15 @@ body {
   margin-bottom: 0;
 }
 
-/* --- ESTILOS NUEVOS PARA LA IMAGEN --- */
 .ponente-imagen {
-  float: left;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%; /* Esto la hace circular */
-  object-fit: cover; /* Evita que la imagen se estire */
-  margin-right: 25px; /* Espacio entre la imagen y el texto */
-  margin-bottom: 10px; /* Espacio por si el texto es muy corto */
+    float: left;
+    width: 200px;
+    height: 285px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
 .ponente-bio h2 {
