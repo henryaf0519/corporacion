@@ -10,21 +10,17 @@ import { marshall } from "@aws-sdk/util-dynamodb";
 function FormularioInscripcionE() {
   const [enviado, setEnviado] = useState(false);
   const [cargando, setCargando] = useState(false); 
-  
-  // --- 1. ESTADO ACTUALIZADO ---
   const [formData, setFormData] = useState({
     nombre: '',
-    apellidos: '', // NUEVO
-    documento: '', // NUEVO
+    apellidos: '',
+    documento: '',
     celular: '',
     email: '',
     empresa: '',
-    nit: '', // NUEVO
+    nit: '',
     cargo: '',
-    comoSeEntero: '', // NUEVO
+    comoSeEntero: '',
   });
-  // ------------------------------
-
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -42,17 +38,16 @@ function FormularioInscripcionE() {
     }
   };
 
-  // --- 2. VALIDACIÓN ACTUALIZADA ---
   const validateForm = () => {
     const newErrors = {};
     if (!formData.nombre.trim()) newErrors.nombre = 'Campo obligatorio';
-    if (!formData.apellidos.trim()) newErrors.apellidos = 'Campo obligatorio'; // NUEVO
-    if (!formData.documento.trim()) newErrors.documento = 'Campo obligatorio'; // NUEVO
+    if (!formData.apellidos.trim()) newErrors.apellidos = 'Campo obligatorio'; 
+    if (!formData.documento.trim()) newErrors.documento = 'Campo obligatorio'; 
     if (!formData.celular.trim()) newErrors.celular = 'Campo obligatorio';
     if (!formData.email.trim()) newErrors.email = 'Campo obligatorio';
     if (!formData.empresa.trim()) newErrors.empresa = 'Campo obligatorio';
-    if (!formData.cargo.trim()) newErrors.cargo = 'Campo obligatorio'; // AHORA OBLIGATORIO
-    if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Campo obligatorio'; // NUEVO
+    if (!formData.cargo.trim()) newErrors.cargo = 'Campo obligatorio';
+    if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Campo obligatorio';
     
     if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'email electrónico no válido';
