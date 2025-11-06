@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import '../styles/Formulario.css';
-import '../styles/Modal.css'; // 1. Importa los estilos del Modal
+import '../styles/Modal.css'; 
 
-// --- ¡IMPORTACIONES NUEVAS! ---
-import Modal from './Modal'; // 2. Importa el componente Modal
+import Modal from './Modal';
 import { dbClient } from '../aws-config'; 
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
-// ------------------------------
 
 function FormularioInscripcion() {
-  const [enviado, setEnviado] = useState(false); // Usaremos 'enviado' para mostrar/ocultar el modal
+  const [enviado, setEnviado] = useState(false);
   const [cargando, setCargando] = useState(false); 
   
+  // --- 1. ESTADO ACTUALIZADO ---
   const [formData, setFormData] = useState({
     nombre: '',
+    apellidos: '', // NUEVO
+    documento: '', // NUEVO
     celular: '',
     email: '',
     empresa: '',
+    nit: '', // NUEVO
     cargo: '',
-    ciudad: '',
+    comoSeEntero: '', // NUEVO
   });
+  // ------------------------------
 
   const [errors, setErrors] = useState({});
 
-  // ... (Las funciones handleChange y validateForm se quedan igual) ...
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -40,12 +42,17 @@ function FormularioInscripcion() {
     }
   };
 
+  // --- 2. VALIDACIÓN ACTUALIZADA ---
   const validateForm = () => {
     const newErrors = {};
     if (!formData.nombre.trim()) newErrors.nombre = 'Campo obligatorio';
+    if (!formData.apellidos.trim()) newErrors.apellidos = 'Campo obligatorio'; // NUEVO
+    if (!formData.documento.trim()) newErrors.documento = 'Campo obligatorio'; // NUEVO
     if (!formData.celular.trim()) newErrors.celular = 'Campo obligatorio';
     if (!formData.email.trim()) newErrors.email = 'Campo obligatorio';
     if (!formData.empresa.trim()) newErrors.empresa = 'Campo obligatorio';
+    if (!formData.cargo.trim()) newErrors.cargo = 'Campo obligatorio'; // AHORA OBLIGATORIO
+    if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Campo obligatorio'; // NUEVO
     
     if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'email electrónico no válido';
@@ -53,6 +60,7 @@ function FormularioInscripcion() {
     
     return newErrors;
   };
+  // ---------------------------------
 
   const handleSubmit = async (event) => {
     event.preventDefault(); 
@@ -63,16 +71,21 @@ function FormularioInscripcion() {
       setCargando(true); 
       
       try {
+        // --- 3. OBJETO DE DYNAMODB ACTUALIZADO ---
         const item = {
           email: formData.email, 
           nombre: formData.nombre,
+          apellidos: formData.apellidos, // NUEVO
+          documento: formData.documento, // NUEVO
           celular: formData.celular,
           empresa: formData.empresa,
-          cargo: formData.cargo || 'No especificado', 
-          ciudad: formData.ciudad || 'No especificada', 
+          nit: formData.nit || 'No aplica', // NUEVO
+          cargo: formData.cargo,
+          comoSeEntero: formData.comoSeEntero, // NUEVO
           fechaInscripcion: new Date().toISOString(),
-          pauta:true
+          pauta: true // <-- Valor para este formulario
         };
+        // ------------------------------------------
 
         const command = new PutItemCommand({
           TableName: "InscripcionesEvento", 
@@ -80,14 +93,13 @@ function FormularioInscripcion() {
         });
 
         await dbClient.send(command);
-
-        setEnviado(true); // 3. Esto ABRIRÁ el modal
+        setEnviado(true);
 
       } catch (error) {
         console.error('Error al guardar en DynamoDB:', error);
         alert("Hubo un error al enviar tu inscripción. Por favor, intenta de nuevo.");
       } finally {
-        setCargando(false); // Quita el estado de carga (en éxito o error)
+        setCargando(false);
       }
 
     } else {
@@ -95,25 +107,26 @@ function FormularioInscripcion() {
     }
   };
 
-  // 4. Nueva función para cerrar el modal Y resetear el formulario
+  // --- 4. RESETEO ACTUALIZADO ---
   const handleCloseModal = () => {
-    setEnviado(false); // Cierra el modal
-    // Resetea el formulario
+    setEnviado(false);
     setFormData({
       nombre: '',
+      apellidos: '',
+      documento: '',
       celular: '',
       email: '',
       empresa: '',
+      nit: '',
       cargo: '',
-      ciudad: '',
+      comoSeEntero: '',
     });
-    setErrors({}); // Limpia los errores
+    setErrors({});
   };
-
-  // 5. ¡ELIMINAMOS EL BLOQUE if (enviado) { ... } DE AQUÍ!
+  // --------------------------------
 
   return (
-    // 6. El 'div' del formulario ahora es la vista principal
+    // --- 5. FORMULARIO (JSX) ACTUALIZADO ---
     <div className="form-container">
       <h1 className="form-title">Formulario de Inscripción</h1>
       <p className="form-subtitle">
@@ -122,10 +135,25 @@ function FormularioInscripcion() {
 
       <form className="inscripcion-form" onSubmit={handleSubmit} noValidate>
         
-        {/* ... (Todos tus inputs del formulario se quedan igual) ... */}
-         {/* Nombres y Apellidos */}
+        {/* Correo Electrónico */}
         <div className="form-group">
-          <label htmlFor="nombre">Nombres y Apellidos *</label>
+          <label htmlFor="email">Correo Electrónico *</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="tu@email.com"
+            value={formData.email}
+            onChange={handleChange}
+            className={errors.email ? 'input-error' : ''}
+            disabled={cargando}
+          />
+          {errors.email && <span className="error-message">{errors.email}</span>}
+        </div>
+        
+        {/* Nombres */}
+        <div className="form-group">
+          <label htmlFor="nombre">Nombres *</label>
           <input 
             type="text" 
             id="nombre" 
@@ -136,6 +164,36 @@ function FormularioInscripcion() {
             disabled={cargando} 
           />
           {errors.nombre && <span className="error-message">{errors.nombre}</span>}
+        </div>
+        
+        {/* Apellidos (NUEVO) */}
+        <div className="form-group">
+          <label htmlFor="apellidos">Apellidos *</label>
+          <input 
+            type="text" 
+            id="apellidos" 
+            name="apellidos" 
+            value={formData.apellidos}
+            onChange={handleChange}
+            className={errors.apellidos ? 'input-error' : ''}
+            disabled={cargando} 
+          />
+          {errors.apellidos && <span className="error-message">{errors.apellidos}</span>}
+        </div>
+        
+        {/* Documento de identidad (NUEVO) */}
+        <div className="form-group">
+          <label htmlFor="documento">Documento de identidad *</label>
+          <input 
+            type="text" 
+            id="documento" 
+            name="documento" 
+            value={formData.documento}
+            onChange={handleChange}
+            className={errors.documento ? 'input-error' : ''}
+            disabled={cargando} 
+          />
+          {errors.documento && <span className="error-message">{errors.documento}</span>}
         </div>
 
         {/* Número de Celular */}
@@ -154,25 +212,9 @@ function FormularioInscripcion() {
           {errors.celular && <span className="error-message">{errors.celular}</span>}
         </div>
 
-        {/* email */}
+        {/* Empresa (Etiqueta actualizada) */}
         <div className="form-group">
-          <label htmlFor="email">email Electrónico *</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="tu@email.com"
-            value={formData.email}
-            onChange={handleChange}
-            className={errors.email ? 'input-error' : ''}
-            disabled={cargando}
-          />
-          {errors.email && <span className="error-message">{errors.email}</span>}
-        </div>
-
-        {/* Empresa */}
-        <div className="form-group">
-          <label htmlFor="empresa">Empresa *</label>
+          <label htmlFor="empresa">Nombre de la Empresa o Institución Educativa o Entidad Pública *</label>
           <input 
             type="text" 
             id="empresa" 
@@ -184,31 +226,56 @@ function FormularioInscripcion() {
           />
           {errors.empresa && <span className="error-message">{errors.empresa}</span>}
         </div>
-
-        {/* Cargo (Opcional) */}
+        
+        {/* NIT de la empresa (NUEVO - Opcional) */}
         <div className="form-group">
-          <label htmlFor="cargo">Cargo</label>
+          <label htmlFor="nit">NIT de la empresa (si aplica)</label>
+          <input 
+            type="text" 
+            id="nit" 
+            name="nit" 
+            value={formData.nit}
+            onChange={handleChange}
+            disabled={cargando}
+          />
+        </div>
+
+        {/* Cargo (Etiqueta actualizada - ahora obligatorio) */}
+        <div className="form-group">
+          <label htmlFor="cargo">Cargo o Rol *</label>
           <input 
             type="text" 
             id="cargo" 
             name="cargo" 
             value={formData.cargo}
             onChange={handleChange}
+            className={errors.cargo ? 'input-error' : ''}
             disabled={cargando}
           />
+          {errors.cargo && <span className="error-message">{errors.cargo}</span>}
         </div>
 
-        {/* Ciudad (Opcional) */}
+        {/* Cómo te enteraste (NUEVO - Select) */}
         <div className="form-group">
-          <label htmlFor="ciudad">Ciudad</label>
-          <input 
-            type="text" 
-            id="ciudad" 
-            name="ciudad" 
-            value={formData.ciudad}
+          <label htmlFor="comoSeEntero">¿Cómo te enteraste de la conferencia? *</label>
+          <select 
+            id="comoSeEntero" 
+            name="comoSeEntero" 
+            value={formData.comoSeEntero}
             onChange={handleChange}
+            className={errors.comoSeEntero ? 'input-error' : ''}
             disabled={cargando}
-          />
+            required
+          >
+            <option value="" disabled>Selecciona una opción...</option>
+            <option value="Publicidad en Redes Sociales">Publicidad en Redes Sociales</option>
+            <option value="Un amigo">Un amigo</option>
+            <option value="Empresa">Empresa</option>
+            <option value="Por medio de un volante">Por medio de un volante</option>
+            <option value="Por un Correo Electrónico">Por un Correo Electrónico</option>
+            <option value="Otro">Otro</option>
+          </select>
+          {errors.comoSeEntero && <span className="error-message">{errors.comoSeEntero}</span>}
         </div>
 
         <button type="submit" className="form-submit-btn" disabled={cargando}>
@@ -216,8 +283,6 @@ function FormularioInscripcion() {
         </button>
       </form>
 
-      {/* 7. AÑADIMOS EL MODAL AQUÍ */}
-      {/* Se mostrará solo cuando 'enviado' sea true */}
       <Modal isOpen={enviado} onClose={handleCloseModal}>
         <h2>¡Inscripción Exitosa!</h2>
         <p>Gracias, estaremos enviando info del evento.</p>

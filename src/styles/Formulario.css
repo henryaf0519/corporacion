@@ -39,14 +39,45 @@
   color: #444;
 }
 
-.form-group input {
+/* --- ESTILOS AGRUPADOS PARA INPUT Y SELECT --- */
+.form-group input,
+.form-group select {
   padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  font-family: inherit; /* Asegura que la fuente sea la misma */
+  background-color: #ffffff; /* Fondo blanco explícito */
+  color: #333; /* Color de texto normal */
+  box-sizing: border-box; /* Asegura consistencia en el padding */
 }
 
-.form-group input:focus {
+/* --- ESTILOS SÓLO PARA EL SELECT --- */
+.form-group select {
+  /* Ocultamos la flecha por defecto */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Añadimos espacio a la derecha para nuestra flecha */
+  padding-right: 40px; 
+
+  /* Flecha personalizada (SVG) */
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10.293 3.293a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L6 7.586l4.293-4.293z" fill="%23666"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px 12px;
+}
+
+/* Estilo para el placeholder "Selecciona una opción..." */
+.form-group select:invalid {
+  color: #757575; /* Color gris para el placeholder */
+}
+
+
+/* --- ESTILOS DE FOCO Y ERROR (ACTUALIZADOS) --- */
+.form-group input:focus,
+.form-group select:focus {
   outline: none;
   border-color: #B200A0; /* Color acento */
   box-shadow: 0 0 0 2px #b200a033;
@@ -69,47 +100,44 @@
   background-color: #8e007e;
 }
 
-/* --- Estilos para el mensaje de éxito --- */
 .form-success-msg {
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.6;
 }
+
 .error-message {
-  color: #d93025; /* Color rojo estándar para errores */
+  color: #d93025;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 5px;
 }
 
-/* El borde rojo en el input que tiene el error */
-.form-group input.input-error {
+.form-group input.input-error,
+.form-group select.input-error {
   border-color: #d93025; 
 }
 
-/* La sombra roja cuando haces foco en el input con error */
-.form-group input.input-error:focus {
+.form-group input.input-error:focus,
+.form-group select.input-error:focus {
   border-color: #d93025;
   box-shadow: 0 0 0 2px #d9302557; 
 }
 
+/* --- RESPONSIVE (NO HAY CAMBIOS AQUÍ) --- */
 @media (max-width: 600px) {
   .form-container {
-    /* Hacemos que ocupe el 90% del ancho, en lugar de un 'max-width' fijo */
     width: 90%;
-    margin: 20px auto; /* Reducimos el margen superior/inferior */
-    padding: 20px; /* Reducimos el padding interno */
+    margin: 20px auto; 
+    padding: 20px; 
     box-sizing: border-box;
   }
-
   .form-title {
-    font-size: 1.8rem; /* Título más pequeño */
+    font-size: 1.8rem;
   }
-
   .form-subtitle {
-    font-size: 1rem; /* Subtítulo más pequeño */
+    font-size: 1rem;
   }
-
   .form-submit-btn {
     font-size: 1rem;
     padding: 14px;
