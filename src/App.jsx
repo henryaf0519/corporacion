@@ -10,6 +10,8 @@ import {
 // 2. Importamos la imagen de los ponentes
 import speakersImage from "./assets/speakers.webp";
 import BiosPonentes from "./components/BiosPonentes";
+import Sponsors from "./components/Sponsors";
+
 
 function App() {
   return (
@@ -114,14 +116,13 @@ function App() {
           </div>
         </div>
       </section>
-
-      {/* --- PIE DE PÁGINA Y CITA --- */}
       <footer className="flyer-footer">
         <p className="quote">
           "The best way to predict the future is to create it" - Peter Drucker
         </p>
       </footer>
     </div>
+    <Sponsors />
     <BiosPonentes />
     </>
     

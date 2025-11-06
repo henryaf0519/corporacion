@@ -471,3 +471,116 @@ body {
      text-align: left; /* Mantenemos los párrafos legibles */
   }
 }
+
+/*
+=========================================
+--- NUEVOS ESTILOS PARA PATROCINADORES ---
+--- (Estilo "Plataformas" oscuro) ---
+=========================================
+*/
+
+.sponsors-section {
+  padding: 40px 0;
+  overflow: hidden;
+  border: none; /* Quitamos bordes anteriores */
+}
+
+.sponsors-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #B200A0; /* TEXTO BLANCO */
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* ESTILO PARA LAS LÍNEAS DE GRADIENTE */
+.gradient-line {
+  height: 2px;
+  width: 100%;
+  /* Gradiente similar al de tu imagen (Rosa/Rojo -> Naranja -> Amarillo) */
+  background: linear-gradient(
+    to right, 
+    #ff4b4b, 
+    #ff7b00, 
+    #ffea00, 
+    #ff7b00, 
+    #ff4b4b
+  );
+  opacity: 0.7;
+  margin: 25px 0; /* Espacio antes y después de los logos */
+}
+
+
+.sponsors-slider {
+  width: 100%;
+  /* Máscara para difuminar los bordes (opcional pero muy pro) */
+  -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+}
+
+/* Animación de scroll infinito */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Movemos la mitad del ancho (la lista original) */
+    transform: translateX(-50%); 
+  }
+}
+
+.sponsors-track {
+  display: flex;
+  /* (7 logos + 7 logos duplicados) * 200px (ancho de c/u) = 2800px */
+  width: calc(200px * 14); 
+  animation: scroll 30s linear infinite; /* 30s de duración, lineal, infinito */
+  will-change: transform; 
+}
+
+/* Pausa la animación al pasar el mouse */
+.sponsors-track:hover {
+  animation-play-state: paused; 
+}
+
+.sponsor-slide {
+  width: 200px; /* Ancho fijo para cada logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.sponsor-slide img {
+  max-width: 100%;
+  height: 145px; /* Altura fija para todos los logos */
+  object-fit: contain; 
+  filter: none; /* LOGOS A FULL COLOR */
+  opacity: 1;   /* Opacidad completa */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto de zoom leve al pasar el mouse */
+.sponsor-slide img:hover {
+  transform: scale(1.1);
+}
+
+
+/* --- RESPONSIVE PARA MÓVILES (PATROCINADORES) --- */
+@media (max-width: 768px) {
+  /* Hacemos los logos más pequeños en móvil */
+  .sponsors-track {
+    /* (7 logos + 7 duplicados) * 150px */
+    width: calc(150px * 14);
+    animation-duration: 25s; /* Un poco más rápido */
+  }
+  
+  .sponsor-slide {
+    width: 150px;
+  }
+
+  .sponsor-slide img {
+    height: 115px;
+  }
+}

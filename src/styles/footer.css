@@ -1,11 +1,59 @@
 .app-footer {
-  color: #ccc;
-  text-align: center;
-  padding: 25px 20px;
-  font-size: 0.9rem;
+  padding: 0; /* Sin padding por defecto para la imagen de escritorio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid #B200A0; /* Línea de acento */
+  min-height: 100px; /* Una altura mínima para que no colapse */
+  box-sizing: border-box;
 }
 
-.app-footer p {
-  margin: 0;
+/*
+=========================================
+--- ESTILOS DE ESCRITORIO (POR DEFECTO) ---
+=========================================
+*/
+.footer-image-desktop {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 1000px; /* Límite para la imagen grande */
+}
+
+.footer-logos-mobile {
+  display: none; /* OCULTO EN ESCRITORIO */
+}
+
+
+/*
+=========================================
+--- ESTILOS PARA MÓVILES (FOOTER) ---
+=========================================
+*/
+@media (max-width: 768px) {
+  .app-footer {
+    padding: 25px 20px; /* Añadimos padding de vuelta en móvil */
+  }
+
+  /* 1. Ocultamos la imagen grande de escritorio */
+  .footer-image-desktop {
+    display: none;
+  }
+
+  /* 2. Mostramos el contenedor de logos móviles */
+  .footer-logos-mobile {
+    display: flex;
+    flex-direction: column; /* Apilamos los logos verticalmente */
+    align-items: center; /* Los centramos */
+    gap: 0; /* Espacio entre logos */
+    width: 100%;
+  }
+
+  /* 3. Estilos para cada logo individual */
+  .footer-logos-mobile img {
+    height: 150px; /* Altura fija para todos */
+    width: auto;
+    max-width: 180px; /* Evita que logos anchos se pasen */
+    object-fit: contain;
+  }
 }
