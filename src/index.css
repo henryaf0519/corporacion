@@ -45,12 +45,7 @@ body {
 
 /* --- SECCIÓN DE PONENTES (LIMPIA Y CORREGIDA) --- */
 
-/* 1. El contenedor de la foto */
-.all-speakers-photo-container {
-  /* Esto centra el contenedor, que tiene un ancho máximo */
-  margin: 0 auto 20px auto; 
-  max-width: 900px; /* El ancho máximo de tu imagen */
-}
+
 
 /* 2. La imagen dentro del contenedor */
 .all-speakers-photo-container img {

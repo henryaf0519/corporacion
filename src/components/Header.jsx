@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Header.css'
+import logo from '../assets/logo.webp';
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +29,7 @@ function Header() {
     // 4. Aplicamos la clase 'scrolled' condicionalmente
     <header className={`app-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-logo">
-        <img src='' alt="Corporación DSF Logo" />
+        <img src={logo} alt="Corporación DSF Logo" />
       </div>
 
       <div className="header-quote">
