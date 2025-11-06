@@ -2,6 +2,7 @@ import React from 'react';
 
 // Un componente reutilizable para mostrar la bio de cada ponente
 function PonenteBio({ nombre, titulo, descripcion, imagen }) {
+  console.log(imagen);
   return (
     <div className="ponente-bio">
       {/* Esta imagen usará 'float: left' desde el CSS 

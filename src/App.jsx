@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 // 2. Importamos la imagen de los ponentes
-import speakersImage from "./assets/speakers.svg";
+import speakersImage from "./assets/speakers.webp";
 
 import BiosPonentes from "./components/BiosPonentes"; 
 import Header from "./components/Header";
