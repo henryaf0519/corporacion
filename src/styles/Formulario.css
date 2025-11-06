@@ -92,3 +92,26 @@
   border-color: #d93025;
   box-shadow: 0 0 0 2px #d9302557; 
 }
+
+@media (max-width: 600px) {
+  .form-container {
+    /* Hacemos que ocupe el 90% del ancho, en lugar de un 'max-width' fijo */
+    width: 90%;
+    margin: 20px auto; /* Reducimos el margen superior/inferior */
+    padding: 20px; /* Reducimos el padding interno */
+    box-sizing: border-box;
+  }
+
+  .form-title {
+    font-size: 1.8rem; /* Título más pequeño */
+  }
+
+  .form-subtitle {
+    font-size: 1rem; /* Subtítulo más pequeño */
+  }
+
+  .form-submit-btn {
+    font-size: 1rem;
+    padding: 14px;
+  }
+}

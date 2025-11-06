@@ -51,3 +51,26 @@
   font-size: 1.1rem;
   margin-bottom: 0;
 }
+
+@media (max-width: 600px) {
+  .modal-content {
+    /* Hacemos que ocupe el 90% del ancho */
+    width: 90%;
+    padding: 25px 20px; /* Reducimos el padding */
+    box-sizing: border-box;
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem; /* Título más pequeño */
+  }
+
+  .modal-content p {
+    font-size: 1rem; /* Texto más pequeño */
+  }
+
+  .modal-close-btn {
+    font-size: 1.8rem;
+    top: 5px;
+    right: 10px;
+  }
+}
