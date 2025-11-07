@@ -538,10 +538,7 @@ body {
   will-change: transform; 
 }
 
-/* Pausa la animación al pasar el mouse */
-.sponsors-track:hover {
-  animation-play-state: paused; 
-}
+
 
 .sponsor-slide {
   width: 200px; /* Ancho fijo para cada logo */
@@ -582,5 +579,60 @@ body {
 
   .sponsor-slide img {
     height: 115px;
+  }
+}
+
+
+/*=========================================
+--- ESTILOS PARA BOTÓN CTA (INSCRIBIRSE) ---
+=========================================
+*/
+
+.cta-button-container {
+  /* Le ponemos fondo blanco porque esta sección
+     está entre el flyer y los sponsors (que es oscuro)
+     y entre las bios y el footer. */
+  background-color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 18px 40px;
+  background-color: #B200A0; /* Color acento del formulario */
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(178, 0, 160, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #8e007e; /* Un poco más oscuro */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(178, 0, 160, 0.4);
+}
+
+/* Para el segundo botón, quitamos el padding superior
+   así no queda tan separado de las bios */
+.cta-button-container:last-of-type {
+  padding-top: 0;
+}
+
+
+@media (max-width: 768px) {
+  .cta-button-container {
+    padding: 30px 20px;
+  }
+  .cta-button {
+    font-size: 1.15rem;
+    padding: 16px 30px;
+  }
+  .cta-button-container:last-of-type {
+    padding-top: 0;
   }
 }
