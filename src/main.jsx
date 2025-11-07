@@ -9,6 +9,7 @@ import Root from './components/Root.jsx';
 import App from './App.jsx';
 import FormularioInscripcion from './components/FormularioInscripcion.jsx';
 import FormularioInscripcionE from './components/FormularioInscripcionEmail.jsx';
+import Gracias from './components/Gracias.jsx';
 
 // 2. Creamos el router
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/inscripcionE',
         element: <FormularioInscripcionE />,
+      },
+      { 
+        path: '/gracias',
+        element: <Gracias />,
       },
     ],
   },

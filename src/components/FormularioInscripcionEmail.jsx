@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/Formulario.css';
-import '../styles/Modal.css';
-
-import Modal from './Modal';
+import { useNavigate } from 'react-router-dom';
 import { dbClient } from '../aws-config'; 
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 
 function FormularioInscripcionE() {
-  const [enviado, setEnviado] = useState(false);
+  const navigate = useNavigate()
   const [cargando, setCargando] = useState(false); 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -88,7 +86,7 @@ function FormularioInscripcionE() {
         });
 
         await dbClient.send(command);
-        setEnviado(true);
+        navigate('/gracias')
 
       } catch (error) {
         console.error('Error al guardar en DynamoDB:', error);
@@ -103,21 +101,7 @@ function FormularioInscripcionE() {
   };
 
   // --- 4. RESETEO ACTUALIZADO ---
-  const handleCloseModal = () => {
-    setEnviado(false);
-    setFormData({
-      nombre: '',
-      apellidos: '',
-      documento: '',
-      celular: '',
-      email: '',
-      empresa: '',
-      nit: '',
-      cargo: '',
-      comoSeEntero: '',
-    });
-    setErrors({});
-  };
+
   // --------------------------------
 
   return (
@@ -278,10 +262,7 @@ function FormularioInscripcionE() {
         </button>
       </form>
 
-      <Modal isOpen={enviado} onClose={handleCloseModal}>
-        <h2>¡Inscripción Exitosa!</h2>
-        <p>Gracias, estaremos enviando info del evento.</p>
-      </Modal>
+
 
     </div>
   );
