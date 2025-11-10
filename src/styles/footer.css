@@ -1,59 +1,90 @@
+/* (Tus estilos existentes... déjalos como están) */
 .app-footer {
-  padding: 0; /* Sin padding por defecto para la imagen de escritorio */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 2px solid #B200A0; /* Línea de acento */
-  min-height: 100px; /* Una altura mínima para que no colapse */
-  box-sizing: border-box;
+  /* Le agregamos el color de fondo negro que tenía en el contexto */
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  /* Añadimos padding-bottom para dar espacio al nuevo botón */
+  padding-bottom: 60px; 
 }
 
-/*
-=========================================
---- ESTILOS DE ESCRITORIO (POR DEFECTO) ---
-=========================================
-*/
 .footer-image-desktop {
   width: 100%;
-  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
   display: block;
-  max-width: 1000px; /* Límite para la imagen grande */
 }
 
 .footer-logos-mobile {
-  display: none; /* OCULTO EN ESCRITORIO */
+  display: none;
 }
 
-
-/*
-=========================================
---- ESTILOS PARA MÓVILES (FOOTER) ---
-=========================================
-*/
+/* (Tu media query existente) */
 @media (max-width: 768px) {
-  .app-footer {
-    padding: 25px 20px; /* Añadimos padding de vuelta en móvil */
-  }
-
-  /* 1. Ocultamos la imagen grande de escritorio */
   .footer-image-desktop {
     display: none;
   }
-
-  /* 2. Mostramos el contenedor de logos móviles */
+  
   .footer-logos-mobile {
     display: flex;
-    flex-direction: column; /* Apilamos los logos verticalmente */
-    align-items: center; /* Los centramos */
-    gap: 0; /* Espacio entre logos */
-    width: 100%;
+    flex-direction: column; /* FIX: Apila las imágenes en columna */
+    align-items: center; /* Centra las imágenes apiladas */
+    width: 90%;
+    margin: 0 auto
   }
 
-  /* 3. Estilos para cada logo individual */
   .footer-logos-mobile img {
-    height: 150px; /* Altura fija para todos */
+    height: 225px;
     width: auto;
-    max-width: 180px; /* Evita que logos anchos se pasen */
     object-fit: contain;
+    max-width: 100%;
+  }
+
+  /* Ajuste para que el botón no quede tan pegado en móvil */
+  .app-footer {
+    padding-bottom: 70px;
+  }
+}
+
+
+/* --- NUEVOS ESTILOS PARA EL BOTÓN DE PRIVACIDAD --- */
+
+.footer-privacy-container {
+  position: absolute;
+  bottom: 10px;
+  /* Alineación a la derecha para Desktop: el botón estará a 44px del borde derecho */
+  right: 0;
+  left: initial; 
+  width: 100%;
+  text-align: center; 
+}
+
+.privacy-button {
+  background: none;
+  border: none;
+  color: #c400d9; /* Color de texto actualizado por el usuario */
+  font-size: 0.8rem;
+  font-family: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 44px; /* Margen para Desktop (44px) */
+  transition: color 0.2s ease-in-out;
+}
+
+.privacy-button:hover {
+  color: #520303; /* Color de hover actualizado por el usuario */
+}
+
+@media (max-width: 768px) {
+    /* ANULACIÓN DE ESTILOS DE DESKTOP para centrar en móvil */
+    .footer-privacy-container {
+        left: 0;
+        right: 0;
+        text-align: center; 
+    }
+
+  .privacy-button {
+    margin-right: 0; /* Quita el margen derecho en móvil (centrado) */
   }
 }
