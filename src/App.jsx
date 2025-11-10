@@ -38,7 +38,7 @@ function App() {
         {/* --- TÍTULO PRINCIPAL --- */}
         <header className="flyer-header">
           <h1>INTELIGENCIA ARTIFICIAL</h1>
-          <p className="subtitle">y financiación de las Empresas y Startups</p>
+          <p className="subtitle">El Futuro de las Empresas y Startups</p>
         </header>
 
         {/* --- DESCRIPCIÓN EXPERTOS --- */}
@@ -96,7 +96,7 @@ function App() {
                 <FaClock className="detail-icon" />
                 <div className="detail-text dfad">
                   <p>
-                    8:15 a.m. - 3:00 p.m. <br />
+                    8:00 a.m. - 3:00 p.m. <br />
                     Conferencias y workshop
                   </p>
                 </div>
