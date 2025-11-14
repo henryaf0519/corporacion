@@ -76,7 +76,8 @@ function FormularioInscripcionE() {
           cargo: formData.cargo,
           comoSeEntero: formData.comoSeEntero, // NUEVO
           fechaInscripcion: new Date().toISOString(),
-          pauta: false // <-- Valor para este formulario
+          pauta: false,
+          emailConfirmed: false
         };
         // ------------------------------------------
 
