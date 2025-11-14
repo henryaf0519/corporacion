@@ -1,11 +1,12 @@
 .gracias-container {
-  min-height: 80vh; /* Que ocupe buen espacio de pantalla */
+  min-height: 80vh;
+  /* Que ocupe buen espacio de pantalla */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
   /* Fondo oscuro, similar a la imagen */
-  background-color: #1a0a38; 
+  background-color: #1a0a38;
   color: #ffffff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
@@ -20,7 +21,7 @@
   font-size: 3rem;
   font-weight: bold;
   /* Usamos el amarillo del flyer */
-  color: #fdd000; 
+  color: #fdd000;
   margin: 0;
 }
 
@@ -44,8 +45,16 @@
   margin: 0 0 40px 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrar items en móvil */
+  align-items: center;
+  /* Centrar items en móvil */
   gap: 15px;
+}
+
+/* Opcional: Para darle más énfasis visual al primer elemento (el del spam) */
+.gracias-checklist li:first-child {
+  margin-bottom: 25px;
+  /* Más espacio después del ítem de la verificación de correo */
+  font-weight: 600;
 }
 
 .gracias-checklist li {
@@ -53,21 +62,24 @@
   align-items: center;
   font-size: 1.1rem;
   text-align: left;
-  max-width: 450px; /* Ancho máximo para los items */
+  max-width: 450px;
+  /* Ancho máximo para los items */
 }
 
 .check-icon {
-  color: #34d399; /* Un verde brillante para el check */
+  color: #34d399;
+  /* Un verde brillante para el check */
   font-size: 1.5rem;
   margin-right: 15px;
-  flex-shrink: 0; /* Evita que el ícono se encoja */
+  flex-shrink: 0;
+  /* Evita que el ícono se encoja */
 }
 
 .gracias-button {
   display: inline-block;
   padding: 16px 35px;
   /* El magenta de la imagen */
-  background-color: #e700ff; 
+  background-color: #e700ff;
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: bold;
@@ -84,23 +96,47 @@
   box-shadow: 0 6px 20px rgba(231, 0, 255, 0.5);
 }
 
+
+.spam-alert {
+  display: inline-block;
+  background-color: #880e4f; /* Un rojo/magenta oscuro para base pro */
+  color: #ffcdd2; /* Texto claro */
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 15px; /* Espacio superior */
+  border: 1px solid #c2185b; /* Borde sutil para destacar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.spam-alert .alert-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+  color: #f8bbd0; /* Color del icono */
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .gracias-title {
     font-size: 2.5rem;
   }
+
   .gracias-subtitle {
     font-size: 1.5rem;
   }
+
   .gracias-text {
     font-size: 1.1rem;
   }
+
   .gracias-checklist li {
     font-size: 1rem;
     /* Alineamos al inicio en lugar de centrar */
     align-items: flex-start;
   }
+
   .check-icon {
-     margin-top: 3px;
+    margin-top: 3px;
   }
 }

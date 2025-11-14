@@ -1,32 +1,35 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import "../styles/Gracias.css"; // Crearemos este archivo a continuación
+// Importamos un ícono de alerta para el toque profesional (FaExclamationTriangle)
+import { FaExclamationTriangle } from "react-icons/fa";
+import "../styles/Gracias.css";
 
 function Gracias() {
   return (
     <div className="gracias-container">
       <div className="gracias-content">
-        <h1 className="gracias-title">¡Estás dentro!</h1>
+        <h1 className="gracias-title">¡Registro Confirmado!</h1>
         <h2 className="gracias-subtitle">
           Bienvenido a la experiencia que une
           <br />
           Inteligencia Artificial, Liderazgo e Innovación
         </h2>
         <p className="gracias-text">
-          Prepárate para vivir un evento único donde aprenderás cómo aplicar la
-          Inteligencia Artificial para escalar negocios, liderar con visión y
-          crear estrategias que marcan la diferencia.
+          Su participación ha sido registrada con éxito. Prepárese para vivir un evento único donde explorará las estrategias clave para aplicar la Inteligencia Artificial en el escalamiento de negocios, el liderazgo con visión de futuro y la creación de estrategias disruptivas.
         </p>
 
-        <ul className="gracias-checklist">
+        {/* --- Nuevo Bloque de Alerta Profesional (Reemplaza el primer <li>) --- */}
+        <p className="spam-alert">
+          <FaExclamationTriangle className="alert-icon" />
+          AVISO IMPORTANTE: Por favor, verifica tu carpeta de Correo No Deseado o Spam para encontrar el email de confirmación que estaremos enviando y los detalles de acceso.
+        </p>
+        {/* --------------------------------------------------------------------- */}
+
+        {/* Modifiqué el margin-bottom para que haya más espacio después de la alerta */}
+        <ul className="gracias-checklist" style={{ marginTop: '40px' }}>
           <li>
             <FaCheck className="check-icon" />
-            Te estaremos enviando lo más pronto un correo para que puedas estar
-            atento del evento, no te preocupes si no lo ves en el momento
-          </li>
-          <li>
-            <FaCheck className="check-icon" />
-            Guarda la fecha y bloquea tu agenda (27 de Noviembre 8:15am - 3pm)
+            Guarda la fecha y bloquea tu agenda: 27 de Noviembre, 8:00 a.m. - 3:00 p.m.
           </li>
           <li>
             <FaCheck className="check-icon" />
