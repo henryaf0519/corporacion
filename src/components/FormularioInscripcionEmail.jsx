@@ -43,8 +43,8 @@ function FormularioInscripcionE() {
     if (!formData.documento.trim()) newErrors.documento = 'Campo obligatorio'; 
     if (!formData.celular.trim()) newErrors.celular = 'Campo obligatorio';
     if (!formData.email.trim()) newErrors.email = 'Campo obligatorio';
-    if (!formData.empresa.trim()) newErrors.empresa = 'Campo obligatorio';
-    if (!formData.cargo.trim()) newErrors.cargo = 'Campo obligatorio';
+    if (!formData.empresa.trim())
+    if (!formData.cargo.trim()) 
     if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Campo obligatorio';
     
     if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {

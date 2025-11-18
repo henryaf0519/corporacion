@@ -1,11 +1,8 @@
 /* (Tus estilos existentes... déjalos como están) */
 .app-footer {
-  /* Le agregamos el color de fondo negro que tenía en el contexto */
-  padding: 20px 0;
   text-align: center;
   position: relative;
-  /* Añadimos padding-bottom para dar espacio al nuevo botón */
-  padding-bottom: 60px; 
+
 }
 
 .footer-image-desktop {
@@ -40,10 +37,7 @@
     max-width: 100%;
   }
 
-  /* Ajuste para que el botón no quede tan pegado en móvil */
-  .app-footer {
-    padding-bottom: 70px;
-  }
+
 }
 
 

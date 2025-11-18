@@ -6,7 +6,7 @@ import Modal from './ModalPoliticas'
 import footerImageDesktop from '../assets/footer.svg';
 import imgScaleUp from '../assets/SCALEUPLATAM.webp';
 import imgGobernacion from '../assets/GOBERNACIÓN DE ANTIOQUIA.webp';
-import imgComfenalco from '../assets/COMFENALCO.webp';
+import imgArgos from '../assets/argos.webp';
 
 function Footer() {
   // 3. Añadir estado para controlar el modal
@@ -16,7 +16,7 @@ function Footer() {
     <>
       <footer className="app-footer">
         
-        {/* (Imágenes de escritorio y móvil - sin cambios) */}
+        {/* (Imágenes de escritorio y móvil - sin cambios) 
         <img 
           src={footerImageDesktop} 
           alt="Sponsors y aliados" 
@@ -25,8 +25,9 @@ function Footer() {
         <div className="footer-logos-mobile">
           <img src={imgScaleUp} alt="ScaleUp LatAm" />
           <img src={imgGobernacion} alt="Gobernación de Antioquia" />
-          <img src={imgComfenalco} alt="Comfenalco Antioquia" />
+          <img src={imgArgos} alt="Comfenalco Antioquia" />
         </div>
+        */}
 
         {/* 4. Contenedor para el botón de políticas */}
         <div className="footer-privacy-container">

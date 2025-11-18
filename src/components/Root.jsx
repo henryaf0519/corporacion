@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
+import Sponsors from './Sponsors';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 
@@ -16,6 +17,7 @@ function Root() {
             nuestro App.jsx o FormularioInscripcion.jsx */}
         <Outlet />
       </main>
+      <Sponsors />
       <Footer />
     </>
   );

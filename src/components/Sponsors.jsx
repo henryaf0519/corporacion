@@ -1,8 +1,6 @@
 import React from 'react';
 
-// (Tus importaciones de logos se quedan igual)
-import imgComfama from '../assets/COMFAMA.webp';
-import imgComfenalco from '../assets/COMFENALCO.webp';
+import imgArgos from '../assets/argos.webp';
 import imgCorantioquia from '../assets/CORANTIOQUIA.webp';
 import imgGobernacion from '../assets/GOBERNACIÓN DE ANTIOQUIA.webp';
 import imgHidratao from '../assets/HIDRATAO.webp';
@@ -14,8 +12,7 @@ import imgLoteria from '../assets/loteria.png';
 import imgDigital from '../assets/digital.png';
 
 const logos = [
-  { src: imgComfama, alt: 'Comfama' },
-  { src: imgComfenalco, alt: 'Comfenalco Antioquia' },
+  { src: imgArgos, alt: 'Argos' },
   { src: imgCorantioquia, alt: 'Corantioquia' },
   { src: imgGobernacion, alt: 'Gobernación de Antioquia' },
   { src: imgHidratao, alt: 'Hidratao' },
