@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Header.css'
 import logo from '../assets/logo.webp';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,6 +29,7 @@ function Header() {
   return (
     // 4. Aplicamos la clase 'scrolled' condicionalmente
     <header className={`app-header ${isScrolled ? 'scrolled' : ''}`}>
+      <Link to="/" className="app-header">
       <div className="header-logo">
         <img src={logo} alt="Corporación DSF Logo" />
       </div>
@@ -36,6 +38,7 @@ function Header() {
         <p>"The best way to predict the future is to <b>create it</b>."</p>
         <span>Peter Drucker</span>
       </div>
+      </Link>
     </header>
   );
 }

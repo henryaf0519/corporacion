@@ -196,7 +196,7 @@ function FormularioInscripcion() {
 
         {/* Empresa (Etiqueta actualizada) */}
         <div className="form-group">
-          <label htmlFor="empresa">Nombre de la Empresa o Institución Educativa o Entidad Pública *</label>
+          <label htmlFor="empresa">Nombre de la Empresa o Institución Educativa o Entidad Pública </label>
           <input 
             type="text" 
             id="empresa" 
@@ -211,7 +211,7 @@ function FormularioInscripcion() {
         
         {/* NIT de la empresa (NUEVO - Opcional) */}
         <div className="form-group">
-          <label htmlFor="nit">NIT de la empresa (si aplica)</label>
+          <label htmlFor="nit">NIT de la empresa (opcional)</label>
           <input 
             type="text" 
             id="nit" 
@@ -224,7 +224,7 @@ function FormularioInscripcion() {
 
         {/* Cargo (Etiqueta actualizada - ahora obligatorio) */}
         <div className="form-group">
-          <label htmlFor="cargo">Cargo o Rol *</label>
+          <label htmlFor="cargo">Cargo o Rol</label>
           <input 
             type="text" 
             id="cargo" 

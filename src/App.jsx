@@ -35,6 +35,11 @@ function App() {
   return (
     <>
       <div className="flyer-container">
+        <header className="flyer-header">
+          <h1 style={{ color: "#ff73df", textTransform: "uppercase" }}>
+            ¡Atención, Últimos cupos. Inscríbete ya!
+          </h1>
+        </header>
         {/* --- TÍTULO PRINCIPAL --- */}
         <header className="flyer-header">
           <h1>INTELIGENCIA ARTIFICIAL</h1>
@@ -119,16 +124,14 @@ function App() {
               </div>
 
               <div className="detail-contact">
-                <p className="text-highlight large-text">
-                  INSCRIPCIÓN GRATUITA
-                </p>
+                <p className="text-highlight large-text">INSCRÍBETE YA</p>
                 <p className="m10">Cupos limitados</p>
                 <p className="website">www.corporaciondsf.com</p>
               </div>
             </div>
           </div>
         </section>
-        
+
         {/* --- Footer del Flyer --- */}
         <footer className="flyer-footer">
           <p className="quote">
@@ -141,7 +144,7 @@ function App() {
       {/* 2. PRIMER BOTÓN (Después del flyer) */}
       <div className="cta-button-container">
         <Link to="/inscripcion" className="cta-button">
-          ¡Inscríbete Gratis Aquí!
+          ¡Inscríbete Aquí!
         </Link>
       </div>
 
@@ -151,7 +154,7 @@ function App() {
       {/* 3. SEGUNDO BOTÓN (Después de las bios) */}
       <div className="cta-button-container">
         <Link to="/inscripcion" className="cta-button">
-          ¡Inscríbete Gratis Aquí!
+          ¡Inscríbete Aquí!
         </Link>
       </div>
     </>
