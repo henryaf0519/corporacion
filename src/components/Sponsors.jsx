@@ -10,17 +10,20 @@ import imgPostobon from '../assets/postobon.png';
 import imgHuit from '../assets/huit.png';
 import imgLoteria from '../assets/loteria.png';
 import imgDigital from '../assets/digital.png';
+import imgConfama from '../assets/COMFAMA.webp'
 
 const logos = [
-  { src: imgArgos, alt: 'Argos' },
+  
   { src: imgCorantioquia, alt: 'Corantioquia' },
   { src: imgGobernacion, alt: 'Gobernación de Antioquia' },
+  { src: imgConfama, alt: 'Comfama' },
+  { src: imgArgos, alt: 'Argos' },
+  { src: imgPostobon, alt: 'Postobon' },
   { src: imgHidratao, alt: 'Hidratao' },
+  { src: imgLoteria, alt: 'Lotería de Medellín' },
   { src: imgIdea, alt: 'IDEA' },
   { src: imgScaleUp, alt: 'ScaleUp LatAm' },
-  { src: imgPostobon, alt: 'Postobon' },
   { src: imgHuit, alt: 'Huit' },
-  { src: imgLoteria, alt: 'Lotería de Medellín' },
   { src: imgDigital, alt: 'Digital' },
 ];
 
