@@ -20,6 +20,9 @@ import Stats from "./components/Stats";
 import Why from "./components/Why";
 import Agenda from "./components/Agenda";
 import Speakers from "./components/Speakers";
+import Highlights from "./components/Highlights";
+import FormularioInscripcion from "./components/FormularioInscripcion";
+import Faq from "./components/Faq";
 
 function App() {
   const speakersRef = useRef(null);
@@ -48,24 +51,9 @@ function App() {
         <Agenda />
         <Speakers />
         <Sponsors />
-      </div>
-      {/* --- FIN DE .flyer-container --- */}
-
-      {/* 2. PRIMER BOTÓN (Después del flyer) */}
-      <div className="cta-button-container">
-        <Link to="/inscripcion" className="cta-button">
-          ¡Inscríbete Aquí!
-        </Link>
-      </div>
-
-    
-      <BiosPonentes />
-
-      {/* 3. SEGUNDO BOTÓN (Después de las bios) */}
-      <div className="cta-button-container">
-        <Link to="/inscripcion" className="cta-button">
-          ¡Inscríbete Aquí!
-        </Link>
+        <Highlights />
+        <FormularioInscripcion />
+        <Faq />
       </div>
     </>
   );

@@ -1,0 +1,98 @@
+.highlights-section {
+    padding: 4rem 2rem;
+    background-color: #050517; /* Fondo oscuro similar al de la imagen */
+}
+
+.highlights-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Importante para el diseño de tarjetas apiladas */
+    justify-content: center; /* Centrar las tarjetas */
+}
+
+/* En pantallas grandes, usamos Grid para el diseño de 1 columna grande + 2 columnas pequeñas */
+@media (min-width: 992px) {
+    .highlights-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr; /* 1 columna grande y 2 pequeñas */
+        grid-template-rows: auto auto; /* 2 filas */
+    }
+    
+    .hl-big {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3; /* Ocupa las dos filas */
+    }
+    
+    .hl-small:nth-child(2) {
+        grid-column: 2 / 4; /* Ocupa las columnas 2 y 3 */
+        grid-row: 1 / 2; /* Primera fila */
+    }
+    
+    .hl-small:nth-child(3) {
+        grid-column: 2 / 4; /* Ocupa las columnas 2 y 3 */
+        grid-row: 2 / 3; /* Segunda fila */
+    }
+}
+
+/* En pantallas medianas y pequeñas, apilamos las tarjetas */
+@media (max-width: 991px) {
+    .hl-card {
+        width: 100%;
+    }
+}
+
+.hl-card {
+    background-color: #12122b; /* Fondo de la tarjeta oscuro */
+    border: 1px solid #1f1f3a; /* Borde sutil */
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinear el texto en la parte inferior */
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.hl-card:hover {
+    transform: scale(1.02);
+}
+
+.hl-bg-num {
+    position: absolute;
+    top: -1rem;
+    right: -0.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 10rem;
+    font-weight: 800;
+    color: rgba(193, 112, 255, 0.05); /* Número de fondo muy sutil */
+    line-height: 1;
+    pointer-events: none;
+}
+
+.hl-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hl-card p {
+    font-size: 0.95rem;
+    color: #b0b0cc; /* Color de texto suave */
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* Clases específicas para los estilos de la imagen (puedes ajustar según sea necesario) */
+.hl-big {
+    background-color: #12122b; /* Color de fondo tarjeta grande */
+}
+
+.hl-small {
+    background-color: #12122b; /* Color de fondo tarjetas pequeñas */
+}

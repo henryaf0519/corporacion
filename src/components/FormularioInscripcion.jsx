@@ -1,271 +1,123 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Formulario.css';
 import { dbClient } from '../aws-config'; 
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
+import '../styles/Formulario.css'; // Asegúrate de tener los estilos que compartiste aquí
 
 function FormularioInscripcion() {
-  const navigate = useNavigate()
-  const [cargando, setCargando] = useState(false); 
-  
-  // --- 1. ESTADO ACTUALIZADO ---
+  const navigate = useNavigate();
+  const [cargando, setCargando] = useState(false);
+  const [exito, setExito] = useState(false); // Estado para mostrar el mensaje de éxito
+
   const [formData, setFormData] = useState({
     nombre: '',
-    apellidos: '', // NUEVO
-    documento: '', // NUEVO
+    apellidos: '',
+    documento: '',
     celular: '',
     email: '',
     empresa: '',
-    nit: '', // NUEVO
+    nit: '',
     cargo: '',
-    comoSeEntero: '', // NUEVO
+    comoSeEntero: '',
   });
-  // ------------------------------
 
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
-    
-    if (value.trim() !== '') {
-      setErrors(prevErrors => ({
-        ...prevErrors,
-        [name]: null,
-      }));
-    }
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
   };
 
-  // --- 2. VALIDACIÓN ACTUALIZADA ---
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.nombre.trim()) newErrors.nombre = 'Campo obligatorio';
-    if (!formData.apellidos.trim()) newErrors.apellidos = 'Campo obligatorio'; // NUEVO
-    if (!formData.documento.trim()) newErrors.documento = 'Campo obligatorio'; // NUEVO
-    if (!formData.celular.trim()) newErrors.celular = 'Campo obligatorio';
-    if (!formData.email.trim()) newErrors.email = 'Campo obligatorio';
-    if (!formData.empresa.trim())
-    if (!formData.cargo.trim())
-    if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Campo obligatorio'; // NUEVO
-    
-    if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'email electrónico no válido';
-    }
-    
+    if (!formData.nombre.trim()) newErrors.nombre = 'Obligatorio';
+    if (!formData.apellidos.trim()) newErrors.apellidos = 'Obligatorio';
+    if (!formData.documento.trim()) newErrors.documento = 'Obligatorio';
+    if (!formData.celular.trim()) newErrors.celular = 'Obligatorio';
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email no válido';
+    if (!formData.comoSeEntero.trim()) newErrors.comoSeEntero = 'Obligatorio';
     return newErrors;
   };
-  // ---------------------------------
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); 
-    const newErrors = validateForm(); 
-    setErrors(newErrors); 
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
-      setCargando(true); 
-      
+      setCargando(true);
       try {
-        // --- 3. OBJETO DE DYNAMODB ACTUALIZADO ---
-        const item = {
-          email: formData.email, 
-          nombre: formData.nombre,
-          apellidos: formData.apellidos, // NUEVO
-          documento: formData.documento, // NUEVO
-          celular: formData.celular,
-          empresa: formData.empresa,
-          nit: formData.nit || 'No aplica', // NUEVO
-          cargo: formData.cargo,
-          comoSeEntero: formData.comoSeEntero, // NUEVO
-          fechaInscripcion: new Date().toISOString(),
-          pauta: true, // <-- Valor para este formulario
-          emailConfirmed: false
-        };
-        // ------------------------------------------
-
-        const command = new PutItemCommand({
-          TableName: "InscripcionesEvento", 
-          Item: marshall(item), 
-        });
-
-        await dbClient.send(command);
-        navigate('/gracias')
-
-      } catch (error) {
-        console.error('Error al guardar en DynamoDB:', error);
-        alert("Hubo un error al enviar tu inscripción. Por favor, intenta de nuevo.");
-      } finally {
-        setCargando(false);
-      }
-
-    } else {
-      console.log('Errores de validación:', newErrors);
-    }
+        const item = { ...formData, fechaInscripcion: new Date().toISOString(), pauta: true, emailConfirmed: false };
+        await dbClient.send(new PutItemCommand({ TableName: "InscripcionesEvento", Item: marshall(item) }));
+        setExito(true); // Mostramos el mensaje de éxito en lugar de navegar
+      } catch (err) {
+        alert("Error al enviar. Intenta de nuevo.");
+      } finally { setCargando(false); }
+    } else { setErrors(newErrors); }
   };
 
-
   return (
-    // --- 5. FORMULARIO (JSX) ACTUALIZADO ---
-    <div className="form-container">
-      <h1 className="form-title">Formulario de Inscripción</h1>
-      <p className="form-subtitle">
-        Inscríbete gratis al VIII Conferencia Internacional y Workshop.
-      </p>
-
-      <form className="inscripcion-form" onSubmit={handleSubmit} noValidate>
+    <section id="registro" className="register">
+      <div className="register-inner">
+        <div className="section-label" style={{textAlign:'center'}}>Inscripción gratuita</div>
+        <h2 className="section-title reveal">Tu cupo te está<br/><span>esperando</span></h2>
+        <p>Los cupos son limitados. Asegura el tuyo ahora, es completamente gratis. En menos de 2 minutos estarás inscrito en el evento de IA más importante del año en Colombia.</p>
         
-        {/* Correo Electrónico */}
-        <div className="form-group">
-          <label htmlFor="email">Correo Electrónico *</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="tu@email.com"
-            value={formData.email}
-            onChange={handleChange}
-            className={errors.email ? 'input-error' : ''}
-            disabled={cargando}
-          />
-          {errors.email && <span className="error-message">{errors.email}</span>}
-        </div>
-        
-        {/* Nombres */}
-        <div className="form-group">
-          <label htmlFor="nombre">Nombres *</label>
-          <input 
-            type="text" 
-            id="nombre" 
-            name="nombre" 
-            value={formData.nombre}
-            onChange={handleChange}
-            className={errors.nombre ? 'input-error' : ''}
-            disabled={cargando} 
-          />
-          {errors.nombre && <span className="error-message">{errors.nombre}</span>}
-        </div>
-        
-        {/* Apellidos (NUEVO) */}
-        <div className="form-group">
-          <label htmlFor="apellidos">Apellidos *</label>
-          <input 
-            type="text" 
-            id="apellidos" 
-            name="apellidos" 
-            value={formData.apellidos}
-            onChange={handleChange}
-            className={errors.apellidos ? 'input-error' : ''}
-            disabled={cargando} 
-          />
-          {errors.apellidos && <span className="error-message">{errors.apellidos}</span>}
-        </div>
-        
-        {/* Documento de identidad (NUEVO) */}
-        <div className="form-group">
-          <label htmlFor="documento">Documento de identidad *</label>
-          <input 
-            type="text" 
-            id="documento" 
-            name="documento" 
-            value={formData.documento}
-            onChange={handleChange}
-            className={errors.documento ? 'input-error' : ''}
-            disabled={cargando} 
-          />
-          {errors.documento && <span className="error-message">{errors.documento}</span>}
-        </div>
+        <div className="form-card reveal">
+          {!exito ? (
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Nombre</label>
+                  <input name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Tu nombre" className={errors.nombre ? 'input-error' : ''}/>
+                </div>
+                <div className="form-group">
+                  <label>Apellido</label>
+                  <input name="apellidos" value={formData.apellidos} onChange={handleChange} placeholder="Tu apellido" className={errors.apellidos ? 'input-error' : ''}/>
+                </div>
+              </div>
 
-        {/* Número de Celular */}
-        <div className="form-group">
-          <label htmlFor="celular">Número de Celular *</label>
-          <input 
-            type="tel" 
-            id="celular" 
-            name="celular" 
-            placeholder="Ej: 3001234567"
-            value={formData.celular}
-            onChange={handleChange}
-            className={errors.celular ? 'input-error' : ''}
-            disabled={cargando}
-          />
-          {errors.celular && <span className="error-message">{errors.celular}</span>}
-        </div>
+              <div className="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="correo@ejemplo.com" className={errors.email ? 'input-error' : ''}/>
+              </div>
 
-        {/* Empresa (Etiqueta actualizada) */}
-        <div className="form-group">
-          <label htmlFor="empresa">Nombre de la Empresa o Institución Educativa o Entidad Pública </label>
-          <input 
-            type="text" 
-            id="empresa" 
-            name="empresa" 
-            value={formData.empresa}
-            onChange={handleChange}
-            className={errors.empresa ? 'input-error' : ''}
-            disabled={cargando}
-          />
-          {errors.empresa && <span className="error-message">{errors.empresa}</span>}
-        </div>
-        
-        {/* NIT de la empresa (NUEVO - Opcional) */}
-        <div className="form-group">
-          <label htmlFor="nit">NIT de la empresa (opcional)</label>
-          <input 
-            type="text" 
-            id="nit" 
-            name="nit" 
-            value={formData.nit}
-            onChange={handleChange}
-            disabled={cargando}
-          />
-        </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Empresa / Organización</label>
+                  <input name="empresa" value={formData.empresa} onChange={handleChange} placeholder="Tu empresa"/>
+                </div>
+                <div className="form-group">
+                  <label>Cargo</label>
+                  <input name="cargo" value={formData.cargo} onChange={handleChange} placeholder="Tu rol"/>
+                </div>
+              </div>
 
-        {/* Cargo (Etiqueta actualizada - ahora obligatorio) */}
-        <div className="form-group">
-          <label htmlFor="cargo">Cargo o Rol</label>
-          <input 
-            type="text" 
-            id="cargo" 
-            name="cargo" 
-            value={formData.cargo}
-            onChange={handleChange}
-            className={errors.cargo ? 'input-error' : ''}
-            disabled={cargando}
-          />
-          {errors.cargo && <span className="error-message">{errors.cargo}</span>}
+              <div className="form-group">
+                <label>¿Cómo te enteraste?</label>
+                <select name="comoSeEntero" value={formData.comoSeEntero} onChange={handleChange}>
+                  <option value="">Selecciona una opción</option>
+                  <option>Redes sociales</option>
+                  <option>Un amigo o colega</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+
+              <button type="submit" className="btn-primary form-submit" disabled={cargando}>
+                {cargando ? 'Enviando...' : '¡Reservar mi cupo gratuito! 🚀'}
+              </button>
+              <div className="form-note">🔒 Tus datos están seguros. No spam, prometido.</div>
+            </form>
+          ) : (
+            <div className="success-msg">
+              <div className="success-icon">✅</div>
+              <h3>¡Estás dentro!</h3>
+              <p>Tu registro fue exitoso. <strong>Nos vemos el 21 de julio en la UPB.</strong></p>
+            </div>
+          )}
         </div>
-
-        {/* Cómo te enteraste (NUEVO - Select) */}
-        <div className="form-group">
-          <label htmlFor="comoSeEntero">¿Cómo te enteraste de la conferencia? *</label>
-          <select 
-            id="comoSeEntero" 
-            name="comoSeEntero" 
-            value={formData.comoSeEntero}
-            onChange={handleChange}
-            className={errors.comoSeEntero ? 'input-error' : ''}
-            disabled={cargando}
-            required
-          >
-            <option value="" disabled>Selecciona una opción...</option>
-            <option value="Publicidad en Redes Sociales">Publicidad en Redes Sociales</option>
-            <option value="Un amigo">Un amigo</option>
-            <option value="Empresa">Empresa</option>
-            <option value="Por medio de un volante">Por medio de un volante</option>
-            <option value="Por un Correo Electrónico">Por un Correo Electrónico</option>
-            <option value="Otro">Otro</option>
-          </select>
-          {errors.comoSeEntero && <span className="error-message">{errors.comoSeEntero}</span>}
-        </div>
-
-        <button type="submit" className="form-submit-btn" disabled={cargando}>
-          {cargando ? 'Enviando...' : 'Inscribirme Ahora'}
-        </button>
-      </form>
-
-    </div>
+      </div>
+    </section>
   );
 }
 

@@ -1,145 +1,91 @@
-.form-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  font-family: system-ui, -apple-system, sans-serif;
-  color: #333;
+.register {
+  background: linear-gradient(135deg, rgba(24, 51, 138, 0.3), rgba(193, 112, 255, 0.1));
+  border-top: 1px solid rgba(193, 112, 255, 0.15);
+  border-bottom: 1px solid rgba(193, 112, 255, 0.15);
 }
 
-.form-title {
-  color: #0d001c; /* Azul oscuro del footer */
+.register-inner {
+  max-width: 620px;
+  margin: 0 auto;
   text-align: center;
-  margin-top: 0;
 }
 
-.form-subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 30px;
+.register-inner .section-title {
+  margin-bottom: 1rem
 }
 
-.inscripcion-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.register-inner p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(193, 112, 255, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem
 }
 
 .form-group label {
+  font-size: 0.8rem;
   font-weight: 500;
-  margin-bottom: 8px;
-  color: #444;
+  color: var(--text-muted);
+  letter-spacing: 0.04em
 }
 
-/* --- ESTILOS AGRUPADOS PARA INPUT Y SELECT --- */
 .form-group input,
 .form-group select {
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: inherit; /* Asegura que la fuente sea la misma */
-  background-color: #ffffff; /* Fondo blanco explícito */
-  color: #333; /* Color de texto normal */
-  box-sizing: border-box; /* Asegura consistencia en el padding */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(193, 112, 255, 0.2);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
 }
 
-/* --- ESTILOS SÓLO PARA EL SELECT --- */
-.form-group select {
-  /* Ocultamos la flecha por defecto */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  /* Añadimos espacio a la derecha para nuestra flecha */
-  padding-right: 40px; 
-
-  /* Flecha personalizada (SVG) */
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10.293 3.293a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L6 7.586l4.293-4.293z" fill="%23666"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 12px 12px;
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.2)
 }
 
-/* Estilo para el placeholder "Selecciona una opción..." */
-.form-group select:invalid {
-  color: #757575; /* Color gris para el placeholder */
-}
-
-
-/* --- ESTILOS DE FOCO Y ERROR (ACTUALIZADOS) --- */
 .form-group input:focus,
 .form-group select:focus {
-  outline: none;
-  border-color: #B200A0; /* Color acento */
-  box-shadow: 0 0 0 2px #b200a033;
+  border-color: rgba(193, 112, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(193, 112, 255, 0.1);
 }
 
-.form-submit-btn {
-  background-color: #B200A0; /* Color acento */
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 10px;
+.form-group select option {
+  background: #0f1733;
+  color: #fff
 }
 
-.form-submit-btn:hover {
-  background-color: #8e007e;
+.form-submit {
+  width: 100%;
+  margin-top: 0.5rem
 }
 
-.form-success-msg {
+.form-note {
   text-align: center;
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-.error-message {
-  color: #d93025;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-.form-group input.input-error,
-.form-group select.input-error {
-  border-color: #d93025; 
-}
-
-.form-group input.input-error:focus,
-.form-group select.input-error:focus {
-  border-color: #d93025;
-  box-shadow: 0 0 0 2px #d9302557; 
-}
-
-/* --- RESPONSIVE (NO HAY CAMBIOS AQUÍ) --- */
-@media (max-width: 600px) {
-  .form-container {
-    width: 90%;
-    margin: 20px auto; 
-    padding: 20px; 
-    box-sizing: border-box;
-  }
-  .form-title {
-    font-size: 1.8rem;
-  }
-  .form-subtitle {
-    font-size: 1rem;
-  }
-  .form-submit-btn {
-    font-size: 1rem;
-    padding: 14px;
-  }
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 1rem
 }
