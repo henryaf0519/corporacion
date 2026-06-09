@@ -33,11 +33,7 @@ function Sponsors() {
   return (
     // La clase principal ahora tiene el fondo negro
     <section className="sponsors-section">
-      <h2 className="sponsors-title">Patrocinadores y Aliados</h2>
-      
-      {/* 1. LÍNEA DE GRADIENTE SUPERIOR */}
-      <div className="gradient-line" />
-      
+      <h2 className="sponsors-title">CON EL APOYO DE NUESTROS ALIADOS ESTRATEGICOS</h2>
       <div className="sponsors-slider">
         <div className="sponsors-track">
           {allLogos.map((logo, index) => (
@@ -47,10 +43,6 @@ function Sponsors() {
           ))}
         </div>
       </div>
-      
-      {/* 2. LÍNEA DE GRADIENTE INFERIOR */}
-      <div className="gradient-line" />
-
     </section>
   );
 }
