@@ -1,4 +1,7 @@
 /* --- Estilos Globales --- */
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   background-color: #06091a;
