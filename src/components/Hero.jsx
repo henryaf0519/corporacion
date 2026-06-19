@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Hero.css";
+import logo from '../assets/test.webp';
 
 const Hero = () => {
   const particlesRef = useRef(null);
@@ -30,26 +31,41 @@ const Hero = () => {
       <div className="hero-bg"></div>
       <div className="grid-overlay"></div>
       <div className="particles" ref={particlesRef}></div>
-
-      <div className="badge">
-        <span className="badge-dot"></span>
-        DSF Corporation Presenta · 21 de Julio, 2025
+      <div>
+        <img className="logoImg" src={logo} alt="Silhouette" />
       </div>
 
-      <h1 className="hero-title">
-        <span className="gradient-text">AI Business</span><br />
-        Summit
-      </h1>
+      <div className="hero-container"> {/* Contenedor para centrar el banner */}
+      <div className="banner-background"> {/* El rectángulo azul oscuro de fondo */}
+        <div className="hero-grid">
+          
+          {/* Columna 1: El "AI" gigante y blanco */}
+          <div className="ai-container">
+            <span className="ai-text">AI</span>
+          </div>
+
+          {/* Columna 2: "BUSINESS" y "SUMMIT" */}
+          <div className="text-container">
+            {/* "BUSINESS" es blanco */}
+            <span className="business-text">BUSINESS</span>
+            
+            {/* "SUMMIT" tiene el degradado morado */}
+            <span className="summit-text gradient-text">SUMMIT</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
       <p className="hero-sub">
         IX Conferencia Internacional de Emprendimiento, Innovación y Liderazgo.<br />
-        Las empresas que liderarán el futuro serán las que mejor implementen Inteligencia Artificial.
+        Las empresas que liderarán el futuro serán las que mejor implementen Inteligencia Artificial. Aprende cómo aplicar IA para crecer, innovar y competir en la nueva economía. 
       </p>
 
       <div className="hero-meta">
         <div className="meta-item">
           <div className="meta-icon">📅</div>
-          <span>Martes <strong>21 de Julio</strong> · 8:00 a.m.</span>
+          <span>Miércoles  <strong>22 de Julio</strong> · 8:00 - 3:00 p.m.</span>
         </div>
         <div className="meta-item">
           <div className="meta-icon">📍</div>

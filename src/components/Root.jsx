@@ -9,7 +9,6 @@ function Root() {
   return (
     <>
       <ScrollToTop />
-      <Header />
       {/* <main> es importante para la semántica 
           y para los estilos (si los necesitaras) */}
       <main>

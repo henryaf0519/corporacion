@@ -12,7 +12,7 @@ const reasons = [
 
 const WhyAsistir = () => {
   return (
-    <section id="porque">
+    <section id="porque" className="why-section">
       <div className="section-label">¿Por qué asistir?</div>
       <h2 className="section-title">
         El futuro no espera.<br />
