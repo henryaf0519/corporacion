@@ -30,7 +30,7 @@ const speakers = [
 
 const Speakers = () => {
   return (
-    <section id="conferencistas">
+    <section id="conferencistas" className="speakers-section">
       <div className="section-label">Conferencistas</div>
       <h2 className="section-title">
         Aprende de quienes<br /><span>ya lo hicieron</span>

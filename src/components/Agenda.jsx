@@ -20,8 +20,12 @@ const Agenda = () => {
           7 horas que pueden<br /><span>transformar tu negocio</span>
         </h2>
       </div>
+      <div className="hero-ctas">
+        <a href="#registro" className="btn-primary">Registrarme</a>
+        
+      </div>
 
-      <div className="agenda-list">
+      {/*<div className="agenda-list">
         {agendaItems.map((item, index) => (
           <div key={index} className="agenda-item">
             <div className="agenda-time">{item.time}</div>
@@ -32,7 +36,7 @@ const Agenda = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

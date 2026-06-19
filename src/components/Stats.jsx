@@ -3,8 +3,8 @@ import Counter from "./Counter";
 import "../styles/stats.css";
 
 const stats = [
-  { value: 500, label: "Líderes empresariales", prefix: "+" },
-  { value: 3, label: "Conferencistas internacionales" },
+  { value: 1000, label: "Líderes empresariales", prefix: "+" },
+  { value: 4, label: "Conferencistas internacionales" },
   { value: 7, label: "De contenido de alto impacto", suffix: "h" },
   { value: 9, label: "Edición del summit", roman: "IX" },
 ];
