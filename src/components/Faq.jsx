@@ -46,6 +46,10 @@ const Faq = () => {
           </div>
         ))}
       </div>
+      <div className="hero-ctas mt-4">
+        <a href="#registro" className="btn-primary">Registrarme</a>
+        
+      </div>
     </section>
   );
 };
