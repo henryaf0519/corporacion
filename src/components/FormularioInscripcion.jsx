@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { dbClient } from '../aws-config'; 
+import { dbClient } from '../aws-config';
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 import '../styles/Formulario.css'; // Asegúrate de tener los estilos que compartiste aquí
@@ -43,53 +43,94 @@ function FormularioInscripcion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("=== INICIANDO SUBMIT ===");
+    console.log("Datos actuales en el formulario (formData):", formData);
+
     const newErrors = validateForm();
+    console.log("Errores encontrados en la validación:", newErrors);
+
     if (Object.keys(newErrors).length === 0) {
       setCargando(true);
       try {
-        const item = { ...formData, fechaInscripcion: new Date().toISOString(), pauta: true, emailConfirmed: false };
-        await dbClient.send(new PutItemCommand({ TableName: "InscripcionesEvento", Item: marshall(item) }));
-        setExito(true); // Mostramos el mensaje de éxito en lugar de navegar
+        const item = {
+          ...formData,
+          fechaInscripcion: new Date().toISOString(),
+          pauta: true,
+          emailConfirmed: false
+        };
+
+        console.log("Datos listos (mapeados) para enviar:", item);
+
+        const marshalledItem = marshall(item);
+        console.log("Datos transformados con marshall (formato DynamoDB):", marshalledItem);
+
+        console.log("Enviando comando PutItemCommand a la tabla 'evento2026'...");
+        const respuestaAWS = await dbClient.send(new PutItemCommand({
+          TableName: "evento2026",
+          Item: marshalledItem
+        }));
+
+        console.log("🚀 ¡CONEXIÓN EXITOSA CON DYNAMODB! Respuesta de AWS:", respuestaAWS);
+        navigate('/gracias');
       } catch (err) {
-        alert("Error al enviar. Intenta de nuevo.");
-      } finally { setCargando(false); }
-    } else { setErrors(newErrors); }
+        console.error("❌ ERROR CRÍTICO al guardar en la Base de Datos:");
+        console.error("Código de error/Mensaje:", err.message);
+        console.error("Objeto de error completo:", err);
+        alert(`Error al enviar. Detalles en la consola de desarrollador.`);
+      } finally {
+        setCargando(false);
+        console.log("=== FIN DEL PROCESO DE SUBMIT ===");
+      }
+    } else {
+      console.warn("⚠️ El formulario NO se envió a AWS porque no pasó la validación local.");
+      setErrors(newErrors);
+    }
   };
 
   return (
     <section id="registro" className="register">
       <div className="register-inner">
-        <div className="section-label" style={{textAlign:'center'}}>Inscripción gratuita</div>
-        <h2 className="section-title reveal">Tu cupo te está<br/><span>esperando</span></h2>
+        <div className="section-label" style={{ textAlign: 'center' }}>Inscripción gratuita</div>
+        <h2 className="section-title reveal">Tu cupo te está<br /><span>esperando</span></h2>
         <p>Los cupos son limitados. Asegura el tuyo ahora, es completamente gratis. En menos de 2 minutos estarás inscrito en el evento de IA más importante del año en Colombia.</p>
-        
+
         <div className="form-card reveal">
           {!exito ? (
             <form onSubmit={handleSubmit} noValidate>
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre</label>
-                  <input name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Tu nombre" className={errors.nombre ? 'input-error' : ''}/>
+                  <input name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Tu nombre" className={errors.nombre ? 'input-error' : ''} />
                 </div>
                 <div className="form-group">
                   <label>Apellido</label>
-                  <input name="apellidos" value={formData.apellidos} onChange={handleChange} placeholder="Tu apellido" className={errors.apellidos ? 'input-error' : ''}/>
+                  <input name="apellidos" value={formData.apellidos} onChange={handleChange} placeholder="Tu apellido" className={errors.apellidos ? 'input-error' : ''} />
                 </div>
               </div>
 
               <div className="form-group">
                 <label>Correo electrónico</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="correo@ejemplo.com" className={errors.email ? 'input-error' : ''}/>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="correo@ejemplo.com" className={errors.email ? 'input-error' : ''} />
               </div>
 
               <div className="form-row">
                 <div className="form-group">
                   <label>Empresa / Organización</label>
-                  <input name="empresa" value={formData.empresa} onChange={handleChange} placeholder="Tu empresa"/>
+                  <input name="empresa" value={formData.empresa} onChange={handleChange} placeholder="Tu empresa" />
                 </div>
                 <div className="form-group">
                   <label>Cargo</label>
-                  <input name="cargo" value={formData.cargo} onChange={handleChange} placeholder="Tu rol"/>
+                  <input name="cargo" value={formData.cargo} onChange={handleChange} placeholder="Tu rol" />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Documento de Identidad</label>
+                  <input name="documento" value={formData.documento} onChange={handleChange} placeholder="C.C. o pasaporte" className={errors.documento ? 'input-error' : ''} />
+                </div>
+                <div className="form-group">
+                  <label>Celular</label>
+                  <input name="celular" value={formData.celular} onChange={handleChange} placeholder="Tu número de teléfono" className={errors.celular ? 'input-error' : ''} />
                 </div>
               </div>
 

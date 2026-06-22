@@ -90,3 +90,20 @@
   color: var(--text-muted);
   margin-top: 1rem
 }
+
+
+@media (max-width: 600px) {
+  .register {
+    padding: 2rem 4%; /* Reduce un poco el espaciado exterior */
+  }
+
+  .form-card {
+    padding: 1.5rem; /* Menos padding interno para aprovechar el ancho */
+    border-radius: 16px; /* Bordes un poco más sutiles en pantallas chicas */
+  }
+
+  .form-row {
+    grid-template-columns: 1fr; /* Pasa de 2 columnas a 1 sola columna */
+    gap: 0rem; /* Elimina la separación horizontal del grid */
+  }
+}

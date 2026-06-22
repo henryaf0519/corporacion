@@ -33,7 +33,7 @@ function Gracias() {
             <div className="check-icon-wrapper">
               <FaCheck className="check-icon" />
             </div>
-            <span>Guarda la fecha y bloquea tu agenda: <span className="highlight-text">27 de Noviembre, 8:00 a.m. - 3:00 p.m.</span></span>
+            <span>Guarda la fecha y bloquea tu agenda: <span className="highlight-text">22 de Julio, 8:00 a.m. - 3:00 p.m.</span></span>
           </li>
           <li>
             <div className="check-icon-wrapper">

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Hero.css";
 import logo from '../assets/test.webp';
+import summit from '../assets/summit.png';
 
 const Hero = () => {
   const particlesRef = useRef(null);
@@ -38,20 +39,7 @@ const Hero = () => {
       <div className="hero-container"> {/* Contenedor para centrar el banner */}
       <div className="banner-background"> {/* El rectángulo azul oscuro de fondo */}
         <div className="hero-grid">
-          
-          {/* Columna 1: El "AI" gigante y blanco */}
-          <div className="ai-container">
-            <span className="ai-text">AI</span>
-          </div>
-
-          {/* Columna 2: "BUSINESS" y "SUMMIT" */}
-          <div className="text-container">
-            {/* "BUSINESS" es blanco */}
-            <span className="business-text">BUSINESS</span>
-            
-            {/* "SUMMIT" tiene el degradado morado */}
-            <span className="summit-text gradient-text">SUMMIT</span>
-          </div>
+          <img src={summit} alt="Summit" className="hero-logo" />
 
         </div>
       </div>

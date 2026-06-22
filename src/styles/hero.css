@@ -17,92 +17,117 @@
         radial-gradient(ellipse 60% 80% at 80% 100%, rgba(24, 51, 138, 0.25) 0%, transparent 70%);
 }
 
+.hero-logo {
+    width: 100%;
+    height: auto;
+}
+
 .hero-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* El rectángulo de fondo con el degradado azul oscuro */
 .banner-background {
-  border-radius: 8px;
-  width: 100%;
-  max-width: 800px; /* Ancho máximo para el banner */
-  display: flex;
-  justify-content: center;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    /* Ancho máximo para el banner */
+    display: flex;
+    justify-content: center;
 }
 
 /* Diseño de cuadrícula para posicionar los elementos */
 .hero-grid {
-  display: grid;
-  grid-template-columns: auto 1fr; /* Columna de tamaño automático para "AI", 1fr para el resto */
-  align-items: center; /* Centrar verticalmente las dos columnas */
-  gap: 1rem; /* Espacio entre el "AI" y el bloque de texto */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* Columna de tamaño automático para "AI", 1fr para el resto */
+    align-items: center;
+    /* Centrar verticalmente las dos columnas */
+    gap: 1rem;
+    /* Espacio entre el "AI" y el bloque de texto */
 }
 
 /* Columna 1: Estilos para el "AI" gigante */
 .ai-container {
-  display: flex;
-  align-items: center;
-  line-height: 1; /* Para un mejor control vertical */
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    /* Para un mejor control vertical */
 }
 
 .ai-text {
-  font-family: Arial, sans-serif; /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
-  font-size: 110px; /* Tamaño enorme */
-  font-weight: 700; /* Negrita */
-  color: white;
-  text-transform: uppercase;
-  margin: 0;
-  letter-spacing: -2px; /* Reducir espaciado entre letras */
+    font-family: Arial, sans-serif;
+    /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
+    font-size: 110px;
+    /* Tamaño enorme */
+    font-weight: 700;
+    /* Negrita */
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -2px;
+    /* Reducir espaciado entre letras */
 }
 
 /* Columna 2: Contenedor para "BUSINESS" y "SUMMIT" */
 .text-container {
-  display: flex;
-  flex-direction: column; /* Apilar verticalmente */
-  align-items: flex-start; /* Alinear a la izquierda */
-  line-height: 1.1; /* Controlar espacio entre líneas */
+    display: flex;
+    flex-direction: column;
+    /* Apilar verticalmente */
+    align-items: flex-start;
+    /* Alinear a la izquierda */
+    line-height: 1.1;
+    /* Controlar espacio entre líneas */
 }
 
 /* Estilos para "BUSINESS" */
 .business-text {
-  font-family: Arial, sans-serif; /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
-  font-size: 40px;
-  font-weight: 700;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1px; /* Aumentar espaciado entre letras */
+    font-family: Arial, sans-serif;
+    /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Aumentar espaciado entre letras */
 }
 
 /* Estilos para "SUMMIT" */
 .summit-text {
-  font-family: Arial, sans-serif; /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
-  font-size: 55px; /* Un poco más grande que BUSINESS */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+    font-family: Arial, sans-serif;
+    /* REEMPLAZAR CON TU FUENTE GILROY BOLD */
+    font-size: 55px;
+    /* Un poco más grande que BUSINESS */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* El efecto de degradado exacto para "SUMMIT" */
 .gradient-text {
-  background: linear-gradient(90deg, #c384ff 0%, #83a4ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; /* Hace el texto transparente para ver el fondo */
-  color: transparent; /* Fallback */
+    background: linear-gradient(90deg, #c384ff 0%, #83a4ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Hace el texto transparente para ver el fondo */
+    color: transparent;
+    /* Fallback */
 }
 
-.hero-title{
+.hero-title {
     color: #fff;
-    margin-top:0;
+    margin-top: 0;
 }
-.logoImg{
+
+.logoImg {
     width: 250px;
     height: auto;
 }
+
 .grid-overlay {
     position: absolute;
     inset: 0;
