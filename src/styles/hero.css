@@ -282,7 +282,7 @@
 .btn-primary {
     background: linear-gradient(135deg, var(--purple) 0%, var(--blue-mid) 100%);
     color: #fff;
-    font-family: 'Syne', sans-serif;
+    font-family: Gilroy;
     font-weight: 700;
     font-size: 1rem;
     padding: 1rem 2.5rem;
@@ -304,7 +304,7 @@
 .btn-secondary {
     background: transparent;
     color: #fff;
-    font-family: 'Syne', sans-serif;
+    font-family: Gilroy;
     font-weight: 600;
     font-size: 1rem;
     padding: 1rem 2.5rem;

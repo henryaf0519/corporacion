@@ -37,11 +37,11 @@
   letter-spacing: 0.1em;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  font-family: 'Syne', sans-serif;
+  font-family: Gilroy;
 }
 
 .gracias-title {
-  font-family: 'Syne', sans-serif;
+  font-family: Gilroy;
   font-size: 3rem;
   font-weight: 800;
   color: #ffffff;
@@ -159,7 +159,7 @@
 .gracias-button {
   background: linear-gradient(135deg, var(--purple) 0%, var(--blue-mid) 100%);
   color: #fff;
-  font-family: 'Syne', sans-serif;
+  font-family: Gilroy;
   font-weight: 700;
   font-size: 1rem;
   padding: 1rem 2.5rem;

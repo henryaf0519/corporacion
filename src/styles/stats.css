@@ -23,7 +23,7 @@
 }
 
 .stat-num {
-  font-family: 'Syne', sans-serif;
+  font-family: Gilroy;
   font-size: 2.5rem;
   font-weight: 800;
   background: linear-gradient(135deg, #fff 20%, var(--purple) 60%, #a0c4ff 100%);
