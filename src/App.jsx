@@ -52,7 +52,6 @@ function App() {
         <Speakers />
         <Sponsors />
         <Highlights />
-        <FormularioInscripcion />
         <Faq />
       </div>
     </>

@@ -11,7 +11,7 @@ const Hero = () => {
     const c = particlesRef.current;
     if (!c) return;
     const colors = ["rgba(193,112,255,0.6)", "rgba(24,51,138,0.8)", "rgba(255,255,255,0.4)"];
-    
+
     for (let i = 0; i < 40; i++) {
       const p = document.createElement("div");
       p.className = "particle";
@@ -37,17 +37,17 @@ const Hero = () => {
       </div>
 
       <div className="hero-container"> {/* Contenedor para centrar el banner */}
-      <div className="banner-background"> {/* El rectángulo azul oscuro de fondo */}
-        <div className="hero-grid">
-          <img src={summit} alt="Summit" className="hero-logo" />
+        <div className="banner-background"> {/* El rectángulo azul oscuro de fondo */}
+          <div className="hero-grid">
+            <img src={summit} alt="Summit" className="hero-logo" />
 
+          </div>
         </div>
       </div>
-    </div>
 
       <p className="hero-sub">
         IX Conferencia Internacional de Emprendimiento, Innovación y Liderazgo.<br />
-        Las empresas que liderarán el futuro serán las que mejor implementen Inteligencia Artificial. Aprende cómo aplicar IA para crecer, innovar y competir en la nueva economía. 
+        Las empresas que liderarán el futuro serán las que mejor implementen Inteligencia Artificial. Aprende cómo aplicar IA para crecer, innovar y competir en la nueva economía.
       </p>
 
       <div className="hero-meta">
@@ -66,10 +66,15 @@ const Hero = () => {
       </div>
 
       <div className="hero-ctas">
-        <a href="#registro" className="btn-primary">Quiero mi cupo gratis</a>
+        <a href="https://www.eventbrite.com/e/ai-business-sumimit-tickets-1991653726911"
+          className="btn-primary"
+          target="_blank"
+          rel="noopener noreferrer">
+          Quiero mi cupo gratis
+        </a>
         <a href="#conferencistas" className="btn-secondary">Ver conferencistas</a>
       </div>
-      
+
       {/* El componente Countdown iría aquí si lo tienes separado */}
     </section>
   );

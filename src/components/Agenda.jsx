@@ -21,7 +21,12 @@ const Agenda = () => {
         </h2>
       </div>
       <div className="hero-ctas">
-        <a href="#registro" className="btn-primary">Registrarme</a>
+       <a href="https://www.eventbrite.com/e/ai-business-sumimit-tickets-1991653726911"
+          className="btn-primary"
+          target="_blank"
+          rel="noopener noreferrer">
+          Registrarme
+        </a>
         
       </div>
 

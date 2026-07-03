@@ -33,7 +33,7 @@ function Sponsors() {
   return (
     // La clase principal ahora tiene el fondo negro
     <section className="sponsors-section">
-      <h2 className="sponsors-title">CON EL APOYO DE NUESTROS ALIADOS ESTRATEGICOS</h2>
+      <h2 className="sponsors-title">CON EL APOYO DE NUESTROS ALIADOS ESTRATÉGICOS</h2>
       <div className="sponsors-slider">
         <div className="sponsors-track">
           {allLogos.map((logo, index) => (

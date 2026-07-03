@@ -4,6 +4,12 @@ import '../styles/Footer.css';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const handleMailClick = (e) => {
+    // Evita cualquier comportamiento extraño del router o de elementos padres
+    e.preventDefault();
+    window.location.href = "mailto:manager@corporaciondsf.com";
+  };
+
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -22,11 +28,12 @@ const Footer = () => {
             <a href="#conferencistas">Conferencistas</a>
             <a href="#registro">Registro</a>
           </div>
-          
+
           <div className="footer-col">
             <h5>Contacto</h5>
-            <a href="mailto:info@dsfcorp.co">info@dsfcorp.co</a>
-            <a href="tel:+5740000000">+57 (4) 000-0000</a>
+            <a href="mailto:manager@corporaciondsf.com" onClick={handleMailClick}>
+              manager@corporaciondsf.com
+            </a>
             <span>Medellín, Colombia</span>
           </div>
         </div>
